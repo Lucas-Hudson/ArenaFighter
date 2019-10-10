@@ -1,2 +1,13 @@
 %h1
-  Hello World!
+  Welcome Page
+
+%p
+  = link_to 'Add Fighter', new_fighter_path
+
+Fighter 1:
+= select_tag "fighter1", options_from_collection_for_select(@fighters, "id", "name")
+
+Fighter 2:
+= select_tag "fighter2", options_from_collection_for_select(@fighters, "id", "name")
+
+= link_to 'Fight!', root_path
