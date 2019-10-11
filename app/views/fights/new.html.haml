@@ -1,0 +1,15 @@
+%h1
+  Welcome Page
+
+%p
+  = link_to 'Add Fighter', new_fighter_path
+
+
+
+= form_for(@fight) do |f|
+  = select_tag :fighter1, options_from_collection_for_select(@fighters, "id", "name")
+  = select_tag :fighter2, options_from_collection_for_select(@fighters, "id", "name")
+  = submit_tag "Fight!"
+
+%p
+  = flash[:success]
