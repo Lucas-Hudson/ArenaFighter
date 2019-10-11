@@ -5,15 +5,14 @@ class FightsController < ApplicationController
   end
 
   def create
-    # Delete last message from the global $stored_message array and delete the flash stored cookies
-    $stored_message = []
+    # Delete last flash notice from cookies
     cookies.delete :flash
     # Call FightSequence and initialize both fighters
     fight_sequence = FightSequence.new(Fighter.find(params[:fighter1]), Fighter.find(params[:fighter2])).fight
     # Create new Fight and store the winner and the loser of the FightSequence
-    @fight = Fight.new(loser: $loser, winner: $winner)
+    @fight = Fight.new(loser: fight_sequence[:loser], winner: fight_sequence[:winner])
       if @fight.save
-        flash[:success] = $stored_message
+        flash[:success] = fight_sequence[:fight_recap]
         redirect_to root_path
       else
         render 'new'
