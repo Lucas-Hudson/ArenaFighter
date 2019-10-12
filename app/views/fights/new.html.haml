@@ -1,16 +1,10 @@
 %h1
   Welcome Page
 
-%p
-  = link_to 'Add Fighter', new_fighter_path
-  = link_to 'All Fighters', fighters_path
-
-
-
 = form_for(@fight) do |f|
   = select_tag :fighter1, options_from_collection_for_select(@fighters, "id", "name", @fighters.first.id)
   = select_tag :fighter2, options_from_collection_for_select(@fighters, "id", "name", @fighters.last.id)
-  = submit_tag "Fight!"
+  = submit_tag "Fight!", class: "btn btn-primary"
 
 %p
-  = flash[:success]
+  = flash[:notice]

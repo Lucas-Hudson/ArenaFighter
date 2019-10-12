@@ -15,7 +15,7 @@ class FightsController < ApplicationController
     @fight = Fight.new(loser: fight_sequence[:loser], winner: fight_sequence[:winner])
     puts "@FIGHT " * 50
       if @fight.save
-        flash[:success] = fight_sequence[:fight_recap]
+        flash[:notice] = fight_sequence[:fight_recap]
         redirect_to root_path
       else
         render 'new'
