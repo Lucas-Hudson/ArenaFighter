@@ -1,0 +1,11 @@
+%p
+  = flash[:success]
+
+%h1
+  All Fighters
+
+%ul
+  - @fighters.each do |fighter|
+    %li
+      = link_to fighter_path(fighter) do
+        = "Name: #{fighter.name}, Lifepoints: #{fighter.lifepoints}, Hitpoints: #{fighter.hitpoints}, Experience: #{fighter.experience}"
