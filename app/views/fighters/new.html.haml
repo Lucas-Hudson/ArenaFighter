@@ -3,6 +3,9 @@
 
 %p
   = form_for(@fighter) do |f|
+    = f.label 'Avatar'
+    = f.file_field 'avatar'
+
     = f.label 'Name'
     = f.text_field 'name', autofocus: true
 

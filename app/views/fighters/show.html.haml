@@ -1,5 +1,6 @@
 %h1
   = @fighter.name
+  = image_tag url_for(avatar(@fighter)), style: "border-radius: 50%; width:5em"
 %ul
   %li
     = "Lifepoints: #{@fighter.lifepoints}"

@@ -5,6 +5,7 @@ class Fighter < ApplicationRecord
 
   has_many :defeats, class_name: "Fight", foreign_key: "loser_id"
   has_many :victories, class_name: "Fight", foreign_key: "winner_id"
+  has_one_attached :avatar
 
   def fights
     Fight.where(loser: self).or(Fight.where(winner: self))
