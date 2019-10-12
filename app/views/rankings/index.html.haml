@@ -1,0 +1,5 @@
+%h1
+  Ranking
+
+- @fighters.sort_by { |obj| -obj.victories.count }.each do |fighter|
+  %li= "Name: #{fighter.name}, Victories: #{fighter.victories.count}, Defeats: #{fighter.defeats.count}, Win Rate: #{fighter.winrate}"
