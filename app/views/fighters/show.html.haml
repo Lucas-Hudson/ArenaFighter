@@ -1,0 +1,14 @@
+%p
+  = flash[:success]
+%h1
+  = @fighter.name
+%ul
+  %li
+    = "Lifepoints: #{@fighter.lifepoints}"
+  %li
+    = "Hitpoints: #{@fighter.hitpoints}"
+  %li
+    = "Experience: #{@fighter.experience}"
+
+%p
+  = link_to "Edit", edit_fighter_path(@fighter)

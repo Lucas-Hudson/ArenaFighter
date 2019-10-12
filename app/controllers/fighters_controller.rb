@@ -1,4 +1,12 @@
 class FightersController < ApplicationController
+  def index
+    @fighters = Fighter.all
+  end
+
+  def show
+    @fighter = Fighter.find(params[:id])
+  end
+
   def new
     @fighter = Fighter.new
   end
@@ -6,10 +14,27 @@ class FightersController < ApplicationController
   def create
     @fighter = Fighter.new(fighter_params)
       if @fighter.save
-        redirect_to root_path
+        flash[:success] = "Fighter created!"
+        redirect_to fighters_path
       else
         render 'new'
       end
+  end
+
+  def edit
+    @fighter = Fighter.find(params[:id])
+  end
+
+  def update
+    @fighter = Fighter.find(params[:id])
+
+    if @fighter.update(fighter_params)
+      flash[:success] = "Update successful"
+      redirect_to fighter_path(@fighter)
+    else
+      render 'new'
+    end
+
   end
 
   private
