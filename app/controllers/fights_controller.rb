@@ -1,4 +1,8 @@
 class FightsController < ApplicationController
+  def index
+    @fights = Fight.all
+  end
+
   def new
     @fighters = Fighter.all
     @fight = Fight.new
