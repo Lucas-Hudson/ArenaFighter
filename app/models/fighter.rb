@@ -22,8 +22,8 @@ class Fighter < ApplicationRecord
     if self.lifepoints > 0
       # Store message that first fighter attacks the other
       FightSequence.store_message("#{self.name} attacks #{fighter.name}")
-      # Calculate the damage
-      damage_inflicted = self.hitpoints + FightSequence.compute_damage
+      # Calculate the damage by adding hitpoints + experience bonus (experience / 10) + random number
+      damage_inflicted = self.hitpoints + (self.experience / 10) + FightSequence.randomize_damage
       # Store message of the damage inflicted
       FightSequence.store_message("Damage is #{damage_inflicted}")
       # Send values to gets_damage method

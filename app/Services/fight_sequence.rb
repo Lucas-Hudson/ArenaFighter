@@ -23,13 +23,16 @@ class FightSequence
     end
     # Add the winner of the fight to the recap
     @@fight_recap << "The winner is #{winner.name}"
+    # Increase the winner's experience by 10
+    new_experience = winner.experience + 10
+    winner.update(experience: new_experience)
     # Return the winner, loser and recap
     {winner: winner, loser: loser, fight_recap: @@fight_recap}
   end
 
     # Randomly varies the damage
-    def self.compute_damage
-      rand(-3..30)
+    def self.randomize_damage
+      rand(-10..10)
     end
 
     # Adds message to @@fight_recap array
