@@ -2,8 +2,18 @@
   Welcome Page
 
 = form_for(@fight) do |f|
+  = f.label 'Fighter 1'
   = select_tag :fighter1, options_from_collection_for_select(@fighters, "id", "name", @fighters.first.id)
+  = f.label 'Weapon 1'
+  = select_tag :weapon1, options_for_select(@accessories)
+  = f.label 'Shield 1'
+  = select_tag :shield1, options_for_select(@accessories)
+  = f.label 'Fighter 2'
   = select_tag :fighter2, options_from_collection_for_select(@fighters, "id", "name", @fighters.last.id)
+  = f.label 'Weapon 2'
+  = select_tag :weapon2, options_for_select(@accessories)
+  = f.label 'Shield 2'
+  = select_tag :shield2, options_for_select(@accessories)
   = submit_tag "Fight!", class: "btn btn-primary"
 
 %p
