@@ -1,0 +1,5 @@
+%h1
+  Fight History
+
+- @fights.each do |fight|
+  %li= "#{fight.id} #{fight.loser.name} #{fight.winner.name}"
