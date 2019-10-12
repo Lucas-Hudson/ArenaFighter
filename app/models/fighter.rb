@@ -19,12 +19,12 @@ class Fighter < ApplicationRecord
     end
   end
 
-  def attacks(fighter)
+  def attacks(fighter, weapon, shield)
     if self.lifepoints > 0
       # Store message that first fighter attacks the other
       FightSequence.store_message("#{self.name} attacks #{fighter.name}")
-      # Calculate the damage by adding hitpoints + experience bonus (experience / 10) + random number
-      damage_inflicted = self.hitpoints + (self.experience / 10) + FightSequence.randomize_damage
+      # Calculate the damage by adding hitpoints + experience bonus (experience / 10) + random number + weapon power
+      damage_inflicted = self.hitpoints + (self.experience / 10) + FightSequence.randomize_damage + weapon
       # Store message of the damage inflicted
       FightSequence.store_message("Damage is #{damage_inflicted}")
       # Send values to gets_damage method
@@ -39,6 +39,16 @@ class Fighter < ApplicationRecord
     FightSequence.store_message("#{fighter.name} has #{fighter.lifepoints} lifepoints left")
     # Return fighter's lifepoints
     fighter.lifepoints
+  end
+
+  def accessory_value(accessory)
+    if accessory == "gold"
+      4
+    elsif accessory == "silver"
+      3
+    else
+      2
+    end
   end
 
 end
