@@ -13,6 +13,7 @@ class FightersController < ApplicationController
 
   def create
     @fighter = Fighter.new(fighter_params)
+    @fighter.avatar.attach(fighter_params[:avatar])
       if @fighter.save
         flash[:success] = "Fighter created!"
         redirect_to fighters_path
@@ -39,6 +40,6 @@ class FightersController < ApplicationController
 
   private
   def fighter_params
-      params.require(:fighter).permit(:name, :lifepoints, :hitpoints)
+      params.require(:fighter).permit(:name, :lifepoints, :hitpoints, :avatar)
   end
 end
