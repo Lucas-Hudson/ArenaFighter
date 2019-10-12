@@ -10,6 +10,14 @@ class Fighter < ApplicationRecord
     Fight.where(loser: self).or(Fight.where(winner: self))
   end
 
+  def winrate
+    if self.fights.count > 0
+      "#{((self.victories.count.to_f / self.fights.count.to_f)*100).to_i}%"
+    else
+      0
+    end
+  end
+
   def attacks(fighter)
     if self.lifepoints > 0
       # Store message that first fighter attacks the other
