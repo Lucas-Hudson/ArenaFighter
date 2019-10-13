@@ -5,10 +5,7 @@
     All Fighters
   %br/
   .row.justify-content-center
-    = link_to "Add Fighter", new_fighter_path, class: "btn btn-primary"
-  %br/
-  .row.justify-content-center
-    .col-4{style: "background-color:white"}
+    .col-5{style: "background-color:white"}
       - @fighters.each do |fighter|
         .row.align-items-center
           = link_to fighter_path(fighter), class: "text-decoration-none", style: "color:black" do
