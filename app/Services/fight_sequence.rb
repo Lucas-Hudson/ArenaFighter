@@ -26,7 +26,7 @@ class FightSequence
       loser = @fighter1
     end
     # Add the winner of the fight to the recap
-    @@fight_recap << "The winner is #{winner.name}"
+    @@fight_recap << "The winner is #{winner.name.capitalize}"
     # Increase the winner's experience by 10
     new_experience = winner.experience + 10
     winner.update(lifepoints: Fighter.find(winner.id).lifepoints, experience: new_experience)

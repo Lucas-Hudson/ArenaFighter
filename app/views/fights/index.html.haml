@@ -1,5 +1,27 @@
-%h1
-  Fight History
+%body{style: "background-color: #F3F3F3"}
+  -2.times do
+    %br/
+  %h1.row.justify-content-center
+    Fight History
+  %br/
 
-- @fights.each do |fight|
-  %li= "#{fight.id} #{fight.loser.name} #{fight.winner.name}"
+.row.justify-content-center
+  .col-5{style: "background-color:white"}
+    %strong.row.align-items-center{style: "border-bottom: 1px solid grey"}
+      .col-1
+        = "#"
+      .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+        = "Winner"
+      .col
+        = "Loser"
+    - @fights.each do |fight|
+      .row.align-items-center
+        .col-1
+          = fight.id
+        .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+          = image_tag url_for(avatar(fight.winner)), class: "avatar"
+          %strong= "#{fight.winner.name.capitalize}"
+        .col
+          = image_tag url_for(avatar(fight.loser)), class: "avatar"
+          %strong= "#{fight.loser.name.capitalize}"
+      %hr.m-0

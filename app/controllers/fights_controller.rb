@@ -6,7 +6,7 @@ class FightsController < ApplicationController
   def new
     @fighters = Fighter.all
     @fight = Fight.new
-    @accessories = ["gold", "silver", "bronze"]
+    @accessories = ["Gold", "Silver", "Bronze"]
   end
 
   def create

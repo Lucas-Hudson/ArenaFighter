@@ -1,5 +1,36 @@
-%h1
-  Ranking
+%body{style: "background-color: #F3F3F3"}
+  -2.times do
+    %br/
+  %h1.row.justify-content-center
+    Ranking
+  %br/
 
-- @fighters.sort_by { |obj| -obj.victories.count }.each do |fighter|
-  %li= "Name: #{fighter.name}, Victories: #{fighter.victories.count}, Defeats: #{fighter.defeats.count}, Win Rate: #{fighter.winrate}"
+.row.justify-content-center
+  .col-5{style: "background-color:white"}
+    %strong.row.align-items-center{style: "border-bottom: 1px solid grey"}
+      .col-1
+        = "#"
+      .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+        = "Fighter"
+      .col-2
+        = "Victories"
+      .col-2{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+        = "Defeats"
+      .col-2
+        = "Winrate"
+    - i = 0
+    - @fighters.sort_by { |obj| -obj.victories.count }.each do |fighter|
+      - i += 1
+      .row.align-items-center
+        .col-1
+          = i
+        .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+          = image_tag url_for(avatar(fighter)), class: "avatar"
+          %strong= "#{fighter.name.capitalize}"
+        .col-2
+          = fighter.victories.count
+        .col-2{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+          = fighter.defeats.count
+        .col-2
+          = fighter.winrate
+      %hr.m-0

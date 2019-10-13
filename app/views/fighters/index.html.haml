@@ -1,10 +1,15 @@
-%h1
-  All Fighters
-
-%ul
-  - @fighters.each do |fighter|
-    %li
-      = link_to fighter_path(fighter) do
-        = "Name: #{fighter.name}, Lifepoints: #{fighter.lifepoints}, Hitpoints: #{fighter.hitpoints}, Experience: #{fighter.experience}"
-
-= link_to "Add Fighter", new_fighter_path, class: "btn btn-primary"
+%body{style: "background-color: #F3F3F3"}
+  -2.times do
+    %br/
+  %h1.row.justify-content-center
+    All Fighters
+  %br/
+  .row.justify-content-center
+    .col-5{style: "background-color:white"}
+      - @fighters.each do |fighter|
+        .row.align-items-center
+          = link_to fighter_path(fighter), class: "text-decoration-none", style: "color:black" do
+            = image_tag url_for(avatar(fighter)), class: "avatar"
+            %strong= "#{fighter.name.capitalize}"
+            = ", Lifepoints: #{fighter.lifepoints}, Hitpoints: #{fighter.hitpoints}, Experience: #{fighter.experience}"
+        %hr.m-2
