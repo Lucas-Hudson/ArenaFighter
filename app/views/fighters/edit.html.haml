@@ -1,0 +1,12 @@
+%p
+  = form_for(@fighter) do |f|
+    = f.label 'Name'
+    = f.text_field 'name', autofocus: true
+
+    = f.label 'Lifepoints'
+    = f.text_field 'lifepoints'
+
+    = f.label 'Hitpoints'
+    = f.text_field 'hitpoints'
+
+    = submit_tag "Edit Fighter"

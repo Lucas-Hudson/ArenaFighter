@@ -1,0 +1,29 @@
+%body{style: "background-color: #F3F3F3"}
+  -2.times do
+    %br/
+  %h1.row.justify-content-center
+    Fight History
+  %br/
+
+.row.justify-content-center
+  .col-5{style: "background-color:white"}
+    %strong.row.align-items-center{style: "border-bottom: 1px solid grey"}
+      .col-1
+        = "#"
+      .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+        = "Winner"
+      .col
+        = "Loser"
+    - @fights.each do |fight|
+      .row.align-items-center
+        .col-1
+          = fight.id
+        .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
+          = link_to fighter_path(fight.winner), class: "text-decoration-none", style: "color:black" do
+            = image_tag url_for(avatar(fight.winner)), class: "avatar"
+            %strong= "#{fight.winner.name.capitalize}"
+        .col
+          = link_to fighter_path(fight.loser), class: "text-decoration-none", style: "color:black" do
+            = image_tag url_for(avatar(fight.loser)), class: "avatar"
+            %strong= "#{fight.loser.name.capitalize}"
+      %hr.m-0

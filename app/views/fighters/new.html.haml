@@ -1,0 +1,24 @@
+- @fighter.errors.each do |attr, msg|
+  = attr
+  = msg
+  %br/
+
+-2.times do
+  %br/
+%h1.row.justify-content-center
+  New Fighter
+%br/
+.row.justify-content-center.text-center
+  %p.form-signin.mt-3
+    = form_for(@fighter) do |f|
+      %label{class: "avatar", style: "background-color: grey; width:10em; height:10em; color:white"}
+        %p{style:"padding-top:4em"}= "Add Photo"
+        = f.file_field 'avatar', style: "display:none"
+      .form-group.pt-3
+        = f.text_field 'name', placeholder: "Name", autofocus: true
+      .form-group
+        = f.text_field 'lifepoints', placeholder: "Lifepoints (90 - 110)"
+      .form-group
+        = f.text_field 'hitpoints', placeholder: "Hitpoints (5 - 15)"
+
+      = submit_tag "Create Fighter", class: "btn btn-primary"

@@ -1,0 +1,60 @@
+-2.times do
+  %br/
+.row.justify-content-center
+  %h1 Welcome to Arena Fighter
+.row.justify-content-center
+  %p Select your best fighters and make them fight!
+
+-3.times do
+  %br/
+
+= form_for(@fight) do |f|
+  .row.justify-content-center
+    .col-3
+      .row.justify-content-center
+        = image_tag url_for(avatar(@fighters.first)), class: "avatar", style: "width:12em; height:12em"
+      %br/
+      .row.justify-content-center
+        .col-3.text-center
+          = f.label 'Fighter 1'
+          %br/
+          = select_tag :fighter1, options_from_collection_for_select(@fighters, "id", "name", @fighters.first.id), class: "btn btn-dark dropdown-toggle", style: "height:2em"
+        .col-3.text-center
+          = f.label 'Weapon 1'
+          %br/
+          = select_tag :weapon1, options_for_select(@accessories), class: "btn btn-outline-dark dropdown-toggle", style: "height:2em"
+        .col-3.text-center
+          = f.label 'Shield 1'
+          %br/
+          = select_tag :shield1, options_for_select(@accessories), class: "btn btn-outline-dark dropdown-toggle", style: "height:2em"
+    .col-1
+      .row.justify-content-center.pt-5
+        = image_tag "vs.png", style: "width:5em"
+      .row.justify-content-center.pt-5.mt-5
+        = submit_tag "Fight!", class: "btn btn-lg btn-danger"
+    .col-3
+      .row.justify-content-center
+        = image_tag url_for(avatar(@fighters.last)), class: "avatar", style: "width:12em; height:12em"
+      %br/
+      .row.justify-content-center
+        .col-3.text-center
+          = f.label 'Fighter 2'
+          %br/
+          = select_tag :fighter2, options_from_collection_for_select(@fighters, "id", "name", @fighters.last.id), class: "btn btn-dark dropdown-toggle", style: "height:2em"
+        .col-3.text-center
+          = f.label 'Weapon 2'
+          %br/
+          = select_tag :weapon2, options_for_select(@accessories), class: "btn btn-outline-dark dropdown-toggle", style: "height:2em"
+        .col-3.text-center
+          = f.label 'Shield 2'
+          %br/
+          = select_tag :shield2, options_for_select(@accessories), class: "btn btn-outline-dark dropdown-toggle", style: "height:2em"
+
+.row.justify-content-center.text-center
+  - if flash[:notice]
+    - flash[:notice][0..-2].each do |index|
+      = index
+      %br/
+.row.justify-content-center.text-center
+  - if flash[:notice]
+    %strong= flash[:notice][-1]

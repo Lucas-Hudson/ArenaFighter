@@ -1,0 +1,25 @@
+%body{style: "background-color: #F3F3F3"}
+  -2.times do
+    %br/
+  %h1.row.justify-content-center
+    = @fighter.name
+  %br/
+
+.row.justify-content-center
+  = image_tag url_for(avatar(@fighter)), class: "avatar", style: "width:10em; height: 10em"
+%br/
+.row.justify-content-center.text-center
+  %ul
+    %li
+      = "Lifepoints: #{@fighter.lifepoints}"
+    %li
+      = "Hitpoints: #{@fighter.hitpoints}"
+    %li
+      = "Experience: #{@fighter.experience}"
+    %li
+      = "Winrate: #{@fighter.winrate}"
+%br/
+.row.justify-content-center.text-center
+  %p
+    = link_to "Edit", edit_fighter_path(@fighter), class: "btn btn-primary"
+    = link_to "Delete", fighter_path(@fighter), method: "delete", class: "btn btn-danger"
