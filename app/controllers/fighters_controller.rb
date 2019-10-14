@@ -16,7 +16,7 @@ class FightersController < ApplicationController
     @fighter.avatar.attach(fighter_params[:avatar])
       if @fighter.save
         flash[:success] = "Fighter created!"
-        redirect_to fighters_path
+        redirect_to fighter_path(@fighter)
       else
         flash[:error]
         render 'new'
