@@ -6,3 +6,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Fighter.destroy_all
+Fight.destroy_all
+
+puts "Old data deleted"
+
+Fighter.create(name:"Tyson", lifepoints: 100, hitpoints: 10)
+Fighter.create(name:"Ali", lifepoints: 100, hitpoints: 10)
+
+puts "2 fighters created"
