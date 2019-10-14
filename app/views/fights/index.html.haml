@@ -19,9 +19,11 @@
         .col-1
           = fight.id
         .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
-          = image_tag url_for(avatar(fight.winner)), class: "avatar"
-          %strong= "#{fight.winner.name.capitalize}"
+          = link_to fighter_path(fight.winner), class: "text-decoration-none", style: "color:black" do
+            = image_tag url_for(avatar(fight.winner)), class: "avatar"
+            %strong= "#{fight.winner.name.capitalize}"
         .col
-          = image_tag url_for(avatar(fight.loser)), class: "avatar"
-          %strong= "#{fight.loser.name.capitalize}"
+          = link_to fighter_path(fight.loser), class: "text-decoration-none", style: "color:black" do
+            = image_tag url_for(avatar(fight.loser)), class: "avatar"
+            %strong= "#{fight.loser.name.capitalize}"
       %hr.m-0

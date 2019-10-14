@@ -25,8 +25,9 @@
         .col-1
           = i
         .col{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
-          = image_tag url_for(avatar(fighter)), class: "avatar"
-          %strong= "#{fighter.name.capitalize}"
+          = link_to fighter_path(fighter), class: "text-decoration-none", style: "color:black" do
+            = image_tag url_for(avatar(fighter)), class: "avatar"
+            %strong= "#{fighter.name.capitalize}"
         .col-2
           = fighter.victories.count
         .col-2{style: "border-left: 1px solid grey; border-right: 1px solid grey"}
