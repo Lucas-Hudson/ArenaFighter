@@ -77,12 +77,66 @@ RSpec.describe FightersController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
-    # des tests
+  describe "PUT update" do
+    context "with valid attributes" do
+      it "located the requested @fighter" do
+        put :update, params: { id: @fighter.id, "fighter" => { name: "Bruce Lee", lifepoints: 100, hitpoints: 10 } }
+        expect(assigns(:fighter)).to eq(@fighter)
+      end
+
+      it "changes @fighter's attributes" do
+        name = "New Name"
+        lifepoints = 110
+        hitpoints = 15
+        put :update, params: { id: @fighter.id, "fighter" => { name: name, lifepoints: lifepoints, hitpoints: hitpoints } }
+        @fighter.reload
+        expect(@fighter.name).to eq(name)
+        expect(@fighter.lifepoints).to eq(lifepoints)
+        expect(@fighter.hitpoints).to eq(hitpoints)
+      end
+
+      it "redirects to the updated contact" do
+        name = "New Name"
+        lifepoints = 110
+        hitpoints = 15
+        put :update, params: { id: @fighter.id, "fighter" => { name: name, lifepoints: lifepoints, hitpoints: hitpoints } }
+        expect(response).to redirect_to @fighter
+      end
+    end
+
+    context "with invalid attributes" do
+      it "locates the requested @fighter" do
+        put :update, params: { id: @fighter.id, "fighter" => { name: "Invalid Name", lifepoints: 0, hitpoints: 0 } }
+        expect(assigns(:fighter)).to eq(@fighter)
+      end
+
+      it "does not change @fighter's attributes" do
+        put :update, params: { id: @fighter.id, "fighter" => { name: "Invalid Name", lifepoints: 0, hitpoints: 0 } }
+        @fighter.reload
+        expect(@fighter.name).not_to eq("Invalid Name")
+        expect(@fighter.lifepoints).not_to eq(0)
+        expect(@fighter.hitpoints).not_to eq(0)
+      end
+
+      it "re-renders the edit method" do
+        put :update, params: { id: @fighter.id, "fighter" => { name: "Invalid Name", lifepoints: 0, hitpoints: 0 } }
+        expect(response).to render_template("edit")
+      end
+    end
   end
 
-  describe "DELETE #destroy" do
-    # des tests
+  describe 'DELETE destroy' do
+
+    it "deletes the fighter" do
+      expect{
+        delete :destroy, params: { id: @fighter.id }
+      }.to change(Fighter, :count).by(-1)
+    end
+
+    it "redirects to fighters#index" do
+      delete :destroy, params: { id: @fighter.id }
+      expect(response).to redirect_to fighters_url
+    end
   end
 
 end

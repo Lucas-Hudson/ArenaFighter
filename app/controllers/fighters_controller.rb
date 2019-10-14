@@ -34,9 +34,19 @@ class FightersController < ApplicationController
       flash[:success] = "Update successful"
       redirect_to fighter_path(@fighter)
     else
-      render 'new'
+      render 'edit'
     end
+  end
 
+  def destroy
+    @fighter = Fighter.find(params[:id])
+
+    if @fighter.destroy
+      flash[:success] = "Fighter deleted"
+      redirect_to fighters_path
+    else
+      render 'destroy'
+    end
   end
 
   private

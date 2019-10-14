@@ -17,7 +17,6 @@ RSpec.describe Fighter, type: :model do
       it "should not be valid without name" do
         bad_fighter = Fighter.create(lifepoints: 100, hitpoints: 10)
         expect(bad_fighter).not_to be_valid
-        # test très sympa qui permet de vérifier que la fameuse formule fighter.errors retourne bien un hash qui contient une erreur concernant le first_name.
         expect(bad_fighter.errors.include?(:name)).to eq(true)
       end
     end
