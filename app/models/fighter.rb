@@ -1,7 +1,7 @@
 class Fighter < ApplicationRecord
-  validates :name, presence: true
-  validates :lifepoints, presence: true
-  validates :hitpoints, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :lifepoints, presence: true, inclusion: { in: 90..110, message: "should range between 90 and 110" }
+  validates :hitpoints, presence: true, inclusion: { in: 5..15, message: "should range between 5 and 15" }
 
   has_many :defeats, class_name: "Fight", foreign_key: "loser_id"
   has_many :victories, class_name: "Fight", foreign_key: "winner_id"

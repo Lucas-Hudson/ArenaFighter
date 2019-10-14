@@ -18,6 +18,7 @@ class FightersController < ApplicationController
         flash[:success] = "Fighter created!"
         redirect_to fighters_path
       else
+        flash[:error]
         render 'new'
       end
   end

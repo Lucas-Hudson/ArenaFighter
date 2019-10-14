@@ -1,3 +1,8 @@
+- @fighter.errors.each do |attr, msg|
+  = attr
+  = msg
+  %br/
+
 -2.times do
   %br/
 %h1.row.justify-content-center
@@ -12,8 +17,8 @@
       .form-group.pt-3
         = f.text_field 'name', placeholder: "Name", autofocus: true
       .form-group
-        = f.text_field 'lifepoints', placeholder: "Lifepoints"
+        = f.text_field 'lifepoints', placeholder: "Lifepoints (90 - 110)"
       .form-group
-        = f.text_field 'hitpoints', placeholder: "Hitpoints"
+        = f.text_field 'hitpoints', placeholder: "Hitpoints (5 - 15)"
 
       = submit_tag "Create Fighter", class: "btn btn-primary"
