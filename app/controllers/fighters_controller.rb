@@ -16,8 +16,9 @@ class FightersController < ApplicationController
     @fighter.avatar.attach(fighter_params[:avatar])
       if @fighter.save
         flash[:success] = "Fighter created!"
-        redirect_to fighters_path
+        redirect_to fighter_path(@fighter)
       else
+        flash[:error]
         render 'new'
       end
   end
@@ -33,9 +34,19 @@ class FightersController < ApplicationController
       flash[:success] = "Update successful"
       redirect_to fighter_path(@fighter)
     else
-      render 'new'
+      render 'edit'
     end
+  end
 
+  def destroy
+    @fighter = Fighter.find(params[:id])
+
+    if @fighter.destroy
+      flash[:success] = "Fighter deleted"
+      redirect_to fighters_path
+    else
+      render 'destroy'
+    end
   end
 
   private

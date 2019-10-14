@@ -22,3 +22,4 @@
 .row.justify-content-center.text-center
   %p
     = link_to "Edit", edit_fighter_path(@fighter), class: "btn btn-primary"
+    = link_to "Delete", fighter_path(@fighter), method: "delete", class: "btn btn-danger"

@@ -10,7 +10,6 @@ class FightsController < ApplicationController
   end
 
   def create
-    puts "CREATE " * 50
     # Delete last flash notice from cookies
     cookies.delete :flash
     # Find both fighters
@@ -25,10 +24,8 @@ class FightsController < ApplicationController
       @fighter2.accessory_value(params[:weapon2]),
       @fighter2.accessory_value(params[:shield2])
     ).fight
-    puts "FIGHT SEQUENCE " * 50
     # Create new Fight and store the winner and the loser of the FightSequence
     @fight = Fight.new(loser: fight_sequence[:loser], winner: fight_sequence[:winner])
-    puts "@FIGHT " * 50
       if @fight.save
         flash[:notice] = fight_sequence[:fight_recap]
         redirect_to root_path
