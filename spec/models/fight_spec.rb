@@ -27,6 +27,14 @@ RSpec.describe Fight, type: :model do
         expect(bad_fight.errors.include?(:loser)).to eq(true)
       end
     end
+
+    describe "#loser" do
+      it "should be different from winner" do
+        bad_fight = Fight.create(loser: Fighter.first, winner: Fighter.first)
+        expect(bad_fight).not_to be_valid
+        expect(bad_fight.errors.include?(:loser)).to eq(true)
+      end
+    end
   end
   context "associations" do
 
