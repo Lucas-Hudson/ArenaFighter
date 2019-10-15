@@ -43,7 +43,8 @@ RSpec.describe Fighter, type: :model do
 
     describe "fights" do
       it "should have_many fights" do
-        fight = Fight.create(winner: @fighter, loser: Fighter.first)
+        @fighter = Fighter.create(name: "HasMany", lifepoints: 100, hitpoints: 10)
+        fight = Fight.create(winner: Fighter.first, loser: @fighter)
         expect(@fighter.fights.include?(fight)).to eq(true)
       end
     end
