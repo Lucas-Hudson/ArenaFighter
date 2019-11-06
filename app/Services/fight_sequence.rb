@@ -8,9 +8,8 @@ class FightSequence
     @shield2 = shield2
   end
 
-  @@fight_recap = []
-
   def fight
+    @@fight_recap = []
     while @fighter1.lifepoints > 0 && @fighter2.lifepoints > 0 do
       @@fight_recap << @fighter1.attacks(@fighter2, @weapon1, @shield1)
       @@fight_recap << @fighter2.attacks(@fighter1, @weapon2, @shield2)

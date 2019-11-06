@@ -10,6 +10,9 @@ class FightsController < ApplicationController
   end
 
   def create
+    @fighters = Fighter.all
+    @fight = Fight.new
+    @accessories = ["Gold", "Silver", "Bronze"]
     cookies.delete :flash
     @fighter1 = Fighter.find(params[:fighter1])
     @fighter2 = Fighter.find(params[:fighter2])
